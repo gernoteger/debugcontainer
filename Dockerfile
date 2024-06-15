@@ -1,3 +1,3 @@
 FROM busybox
 
-CMD  ["/bin/sh", "-c", 'while true; do sleep 10000; done']
+CMD  while true; do sleep 10000; done
