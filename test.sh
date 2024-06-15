@@ -25,7 +25,7 @@ fi
 
 
 mkdir -p target/testarea
-pushd testarea
+pushd target/testarea
 
 message " Cleaning up from previous test run "
 docker ps -aq --filter "name=debugcontainer-tests" | grep -q . && docker stop debugcontainer-tests && docker rm -f debugcontainer-tests
