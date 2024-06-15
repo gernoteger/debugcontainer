@@ -1,3 +1,5 @@
-FROM busybox
+FROM alpine:3.20
 
-CMD  while true; do sleep 10000; done
+RUN  apk add --no-cache rsync curl
+
+CMD  while true; do sleep 1000; done
