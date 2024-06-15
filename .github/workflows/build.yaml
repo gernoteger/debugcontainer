@@ -43,7 +43,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            mendhak/http-https-echo
+            gernoteger/debugcontainer
 
       - name: Build the image multi-platform
         uses: docker/build-push-action@v5
@@ -68,18 +68,18 @@ jobs:
           tags: "gernoteger/debugcontainer:testing"
           labels: ${{ steps.meta.outputs.labels }}
 
-      # - name: Run tests using the test image
-      #   run: ./tests.sh
+      - name: Run tests using the test image
+        run: ./tests.sh
 
-      # - name: Scan the image
-      #   id: scan
-      #   uses: anchore/scan-action@v3
-      #   with:
-      #     image: "mendhak/http-https-echo:latest"
-      #     output-format: sarif
-      #     severity-cutoff: critical
+      - name: Scan the image
+        id: scan
+        uses: anchore/scan-action@v3
+        with:
+          image: "gernoteger/debugcontainer:latest"
+          output-format: sarif
+          severity-cutoff: critical
 
-      # - name: upload Anchore scan SARIF report
-      #   uses: github/codeql-action/upload-sarif@v3
-      #   with:
-      #     sarif_file: ${{ steps.scan.outputs.sarif }}
+      - name: upload Anchore scan SARIF report
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: ${{ steps.scan.outputs.sarif }}
