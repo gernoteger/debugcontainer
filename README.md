@@ -7,4 +7,6 @@ a  very simple debug container
 
 shows how to publish to github
 
-
+# Releasing
+- tag your version
+- the docker image will be published with the tag by the github action
